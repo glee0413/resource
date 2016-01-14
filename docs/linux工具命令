@@ -1,0 +1,26 @@
+
+## linux工具
+### 目录
+#### bash
+#### xargs
+#### tmux
+
+###  bash基本快捷键
+
+> 在 Bash 中，可以使用 **ctrl-w** 删除你键入的最后一个单词，使用 **ctrl-u** 删除整行，使用 **alt-b** 和 **alt-f** 以单词为单位移动光标，使用 **ctrl-a** 将光标移至行首，使用 **ctrl-e** 将光标移至行尾，使用 ctrl-k 删除光标至行尾的所有内容，使用 **ctrl-l**清屏。键入 **man readline** 查看 Bash 中的默认快捷键，内容很多。例如 alt-. 循环地移向前一个参数，以及 alt-* 展开通配符。
+
+> 你喜欢的话，可以键入 **set -o vi** 来使用 vi 风格的快捷键，而 set -o emacs 可以把它改回来。
+
+> 键入 history 查看命令行历史记录。其中有许多缩写，例如 **!$**（最后键入的参数）和 **!!**（最后键入的命令），尽管通常被 ctrl-r 和 alt-. 取代。
+
+### xargs
+> find . -name '*.py' | xargs grep some_function
+
+> cat hosts | xargs -I{} ssh root@{} hostname
+
+### tmux
+>  纵向分割屏幕：ctrl-b %
+
+>  横向缝合屏幕:ctrl-b "
+
+>  切换屏幕：ctrl-b 方向键
