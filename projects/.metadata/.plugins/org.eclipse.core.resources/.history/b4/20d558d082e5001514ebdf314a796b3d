@@ -1,0 +1,21 @@
+/*
+ * fsm.c
+ *
+ *  Created on: Mar 8, 2016
+ *      Author: root
+ */
+#include <fsm.h>
+
+int
+do_fsm_action(ge_fsm_st *fsm,int event_id,void* data){
+	fsm_event_st event;
+	if(!fsm)
+		return -1;
+
+	memset(&event,0,sizeof(fsm_event_st));
+
+	fsm->cur_state.do_action()
+
+	return 0;
+}
+

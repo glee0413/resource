@@ -1,0 +1,14 @@
+/*
+ * fsm.c
+ *
+ *  Created on: Mar 8, 2016
+ *      Author: root
+ */
+#include <fsm.h>
+
+int
+do_fsm_action(int event_id,void* data){
+
+	return 0;
+}
+

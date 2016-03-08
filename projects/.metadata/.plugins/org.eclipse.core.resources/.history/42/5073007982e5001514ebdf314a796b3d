@@ -1,0 +1,16 @@
+/*
+ * fsm.c
+ *
+ *  Created on: Mar 8, 2016
+ *      Author: root
+ */
+#include <fsm.h>
+
+int
+do_fsm_action(ge_fsm_st *fsm,int event_id,void* data){
+
+	if()
+
+	return 0;
+}
+

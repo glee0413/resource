@@ -1,0 +1,39 @@
+/*
+ * fsm.h
+ *
+ *  Created on: Mar 8, 2016
+ *      Author: root
+ */
+
+#ifndef FSM_FSM_H_
+#define FSM_FSM_H_
+
+enum FSM_ACTION_TYPE{
+	FAT_ERROR = -1,
+	FAT_IGNORE = 0,
+	FAT_NEXT_STATE,
+	FAT_ERROR,
+
+};
+
+typedef struct ge_fsm_event{
+	int event_id;
+	void* data;
+} fsm_event_st;
+
+typedef struct ge_fsm_state{
+	char* name;
+	ge_fsm_state_st* (*get_next_status)(int event_id);
+	int (*do_action)(fsm_event_st* event);
+	int (*entry_action)(fsm_event_st* event);
+	int (*exit_action)(fsm_event_st* event);
+	int timeout;
+}ge_fsm_state_st;
+
+typedef struct ge_fsm{
+	ge_fsm_state_st pre_state;
+	ge_fsm_state_st cur_state;
+
+};
+
+#endif /* FSM_FSM_H_ */
