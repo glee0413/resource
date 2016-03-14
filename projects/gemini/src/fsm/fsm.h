@@ -8,24 +8,26 @@
 #ifndef FSM_FSM_H_
 #define FSM_FSM_H_
 
-enum FSM_ACTION_TYPE{
-	FAT_ERROR = -1,
-	FAT_IGNORE = 0,
-	FAT_NEXT_STATE,
-	FAT_MAX,
-
+enum FSM_ACTION_STATUS{
+	FAS_ERROR = -1,
+	FAS_OK = 0,
+	FAS_NEXT_STATE,
+	FAS_IGNORE,
+	FAS_MAX,
 };
 
 typedef struct ge_fsm_event{
 	int event_id;
 	void* data;
+	int len;
 } fsm_event_st;
 
 typedef struct ge_fsm_state{
+	int state_id;
 	char* name;
 	ge_fsm_state_st* (*get_next_status)(int event_id);
 	int (*do_action)(fsm_event_st* event);
-	int (*entry_action)(fsm_event_st* event);
+	int (*entry_action)();
 	int (*exit_action)(fsm_event_st* event);
 	int timeout;
 }ge_fsm_state_st;
