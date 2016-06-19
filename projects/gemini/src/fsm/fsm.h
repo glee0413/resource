@@ -27,7 +27,7 @@ typedef struct ge_fsm_state{
 	char* name;
 	ge_fsm_state_st* (*get_next_status)(int event_id);
 	int (*do_action)(fsm_event_st* event);
-	int (*entry_action)();
+	int (*entry_action)(const struct ge_fsm_state* pre_status);
 	int (*exit_action)(fsm_event_st* event);
 	int timeout;
 }ge_fsm_state_st;

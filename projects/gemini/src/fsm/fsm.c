@@ -25,14 +25,20 @@ do_fsm_action(ge_fsm_st *fsm,int event_id,void* data,int len){
 	action_type = fsm->cur_state.do_action(&event);
 
 	while(FAS_NEXT_STATE == action_type){
-		fsm->cur_state.exit_action(&event);
+		if(fsm->cur_state.exit_action)
+			fsm->cur_state.exit_action(&event);
 		next_state = fsm->cur_state.get_next_status(&event);
 		if(!next_state){
-			//TODO : error status
+			action_type = FAS_ERROR;
 			break;
 		}
+		fsm->pre_state = fsm->cur_state;
 		fsm->cur_state = next_state;
-		action_type = fsm->cur_state.entry_action();
+		if(fsm->cur_state.entry_action){
+			action_type = fsm->cur_state.entry_action(&fsm->pre_state);
+		}else{
+			action_type = FAS_OK;
+		}
 	}
 
 	return 0;
