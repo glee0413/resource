@@ -1,0 +1,198 @@
+4.4内核oops
+
+[   37.128636] [<c04d7c18>] (cppi41_dma_channel_program) from [<c04d2ebc>] (musb_host_rx+0x72c/0x838)
+[   37.138017]  r10:0000000c r9:c09d74c4 r8:e098cc10 r7:ddcece1c r6:dc375600 r5:ddfd4014
+[   37.146237]  r4:ddcec010
+[   37.148893] [<c04d2790>] (musb_host_rx) from [<c04ce220>] (musb_dma_completion+0x7c/0x80)
+[   37.157454]  r10:00000000 r9:ddbf9010 r8:e098cc10 r7:20000193 r6:ddcec010 r5:ddcece1c
+[   37.165674]  r4:dd9de374
+[   37.168331] [<c04ce1a4>] (musb_dma_completion) from [<c04d7ff8>] (cppi41_trans_done+0x178/0x1cc)
+[   37.177536] [<c04d7e80>] (cppi41_trans_done) from [<c04d80f4>] (cppi41_dma_callback+0xa8/0x248)
+[   37.186642]  r10:00000000 r9:ddbf9010 r8:0000000c r7:20000193 r6:ddcece1c r5:ddcec010
+[   37.194862]  r4:dd9de374
+[   37.197524] [<c04d804c>] (cppi41_dma_callback) from [<c035c3a0>] (cppi41_irq+0x100/0x1a8)
+[   37.206085]  r10:00000099 r8:9e0416c0 r7:00000001 r6:00000080 r5:00000000 r4:00000000
+[   37.214315] [<c035c2a0>] (cppi41_irq) from [<c0067130>] (handle_irq_event_percpu+0x64/0x170)
+[   37.223150]  r10:dd958ac0 r9:c09a10d4 r8:000000b3 r7:00000000 r6:00000000 r5:dd958ad0
+[   37.231369]  r4:ddc03b40
+[   37.234024] [<c00670cc>] (handle_irq_event_percpu) from [<c0067290>] (handle_irq_event+0x54/0x8c)
+[   37.243312]  r10:dd804000 r9:b6fa5dc8 r8:dc40bfb0 r7:00000000 r6:00000000 r5:dd958ad0
+[   37.251531]  r4:dd958ac0
+[   37.254189] [<c006723c>] (handle_irq_event) from [<c006a340>] (handle_level_irq+0xe8/0x170)
+[   37.262931]  r5:dd958ad0 r4:dd958ac0
+[   37.266682] [<c006a258>] (handle_level_irq) from [<c00669bc>] (generic_handle_irq+0x20/0x30)
+[   37.275516]  r5:c097397c r4:000000b3
+[   37.279268] [<c006699c>] (generic_handle_irq) from [<c0066af4>] (__handle_domain_irq+0x68/0xd8)
+[   37.288380] [<c0066a8c>] (__handle_domain_irq) from [<c0009444>] (omap_intc_handle_irq+0x38/0x98)
+[   37.297668]  r10:b6f9c45c r8:10c5387d r7:10c5387d r6:ffffffff r5:60000030 r4:c09cd200
+[   37.305900] [<c000940c>] (omap_intc_handle_irq) from [<c06a4674>] (__irq_usr+0x54/0x80)
+[   37.314280] Exception stack(0xdc40bfb0 to 0xdc40bff8)
+[   37.319568] bfa0:                                     00009d42 40000000 00000000 b6fa6958
+[   37.328135] bfc0: 00000000 b5d93290 cea36a7e 00000026 00000000 b6fa5dc8 b6f9c45c 06751b53
+[   37.336700] bfe0: 0003237c bea58a58 b6f8f61f b6f8f10e 60000030 ffffffff
+[   37.343622]  r4:b6f8f10e r3:00009d42
+[   37.347374] Code: e92ddff0 e24cb004 e24dd01c e1a0c001 (e590100c) 
+[   37.353760] ---[ end trace 1375b0a93e2d4a38 ]---
+[   37.358593] Kernel panic - not syncing: Fatal exception in interrupt
+[   37.365248] ---[ end Kernel panic - not syncing: Fatal exception in interrupt
+Y.U.1.2};{index: 6,type: 1,flags: 2,description: YV12,pixelformat(fourcc): 32315659:Y.V.1.2};
+[16:19:03.450160][TRACE][../src/device/video/carema_hander.cpp:181] CameraHander::startCapture called
+
+
+[   55.554093] [drivers/media/v4l2-core/v4l2-ioctl.c 1838] dqueue buff uvc_ioctl_dqbuf [uvcvideo]
+[   55.563851] [(null) 2048] block :2050
+[   55.567718] [drivers/media/v4l2-core/videobuf2-core.c 1626] queue ddc53ad4 vb queue ddc53ad4 
+[   55.577215] [drivers/media/v4l2-core/videobuf2-core.c 1627] vb queue ops uvc_queue_qops [uvcvideo]
+[   50.630905] CPU: 0 PID: 3132 Comm: lpr Not tainted 4.4.13-nisc #12
+[   50.637403] Hardware name: Generic AM33XX (Flattened Device Tree)
+[   50.644502] Backtrace: 
+[   50.647116] [<c0012be4>] (dump_backtrace) from [<c0012d80>] (show_stack+0x18/0x1c)
+[   50.655476]  r6:ddd74a00 r5:ddf35e14 r4:ddc53ad4 r3:3af9e8ef
+[   50.661487] [<c0012d68>] (show_stack) from [<c02c505c>] (dump_stack+0x20/0x28)
+[   50.678526] [<c02c503c>] (dump_stack) from [<bf04b300>] (__fill_v4l2_buffer+0x20/0x220 [videobuf2_v4l2])
+[   50.689380] [<bf04b2e0>] (__fill_v4l2_buffer [videobuf2_v4l2]) from [<bf0400b0>] (vb2_core_querybuf+0x3c/0x48 [videobuf2_core])
+[   50.701774]  r8:ddd2bc40 r7:bf069b38 r6:ddf35e14 r5:ddf35e14 r4:ddc53ad4 r3:bf04b2e0
+[   50.709993] [<bf040074>] (vb2_core_querybuf [videobuf2_core]) from [<bf04cfe4>] (vb2_querybuf+0x94/0xbc [videobuf2_v4l2])
+[   50.721977] [<bf04cf50>] (vb2_querybuf [videobuf2_v4l2]) from [<bf061fd4>] (uvc_query_buffer+0x2c/0x40 [uvcvideo])
+[   50.732856]  r5:ddc53ad4 r4:ddc53c08
+[   50.736642] [<bf061fa8>] (uvc_query_buffer [uvcvideo]) from [<bf063528>] (uvc_ioctl_querybuf+0x28/0x34 [uvcvideo])
+[   50.747867]  r6:ddb4b680 r5:ddf35e14 r4:ddd2bc40 r3:00000001
+[   50.754044] [<bf063500>] (uvc_ioctl_querybuf [uvcvideo]) from [<bf00eedc>] (v4l_querybuf+0x44/0x48 [videodev])
+[   50.765041] [<bf00ee98>] (v4l_querybuf [videodev]) from [<bf00cd10>] (__video_do_ioctl+0x270/0x304 [videodev])
+[   50.775576]  r7:00000000 r6:ddb4b680 r5:ddc53810 r4:c0445609
+[   50.781967] [<bf00caa0>] (__video_do_ioctl [videodev]) from [<bf00e8e0>] (video_usercopy+0x138/0x534 [videodev])
+[   50.793048]  r10:ddf35e14 r9:be9c29b4 r8:00000000 r7:c095804c r6:00000000 r5:bf00caa0
+[   50.801317]  r4:c0445609
+[   50.804095] [<bf00e7a8>] (video_usercopy [videodev]) from [<bf00ecf4>] (video_ioctl2+0x18/0x1c [videodev])
+[   50.814561]  r10:be9c29b4 r9:dca98968 r8:00000000 r7:c0445609 r6:be9c29b4 r5:ddd2bc40
+[   50.822824]  r4:ddc53810
+[   50.825592] [<bf00ecdc>] (video_ioctl2 [videodev]) from [<bf009548>] (v4l2_ioctl+0x9c/0xbc [videodev])
+[   50.835825] [<bf0094ac>] (v4l2_ioctl [videodev]) from [<c0111314>] (do_vfs_ioctl+0x80/0x6f8)
+[   50.844709]  r8:c0445609 r7:be9c29b4 r6:00000003 r5:ddd2bc40 r4:ddd2bc40 r3:bf0094ac
+[   50.853152] [<c0111294>] (do_vfs_ioctl) from [<c01119f8>] (SyS_ioctl+0x6c/0x7c)
+[   50.861100]  r10:00000003 r9:ddf34000 r8:c0445609 r7:be9c29b4 r6:00000000 r5:ddd2bc40
+[   50.869354]  r4:ddd2bc40
+[   50.872025] [<c011198c>] (SyS_ioctl) from [<c000fb80>] (ret_fast_syscall+0x0/0x3c)
+[   50.880260]  r10:00000000 r8:c000fd44 r7:00000036 r6:00000000 r5:00000000 r4:00000000
+
+
+
+[  147.706719] [drivers/media/usb/uvc/uvc_video.c 1088] uvc_video_decode_data bytesused 30424
+[  147.715371] CPU: 0 PID: 2827 Comm: rs:main Q:Reg Not tainted 4.4.13-nisc #12
+[  147.722748] Hardware name: Generic AM33XX (Flattened Device Tree)
+[  147.729123] Backtrace: 
+[  147.731689] [<c0012be4>] (dump_backtrace) from [<c0012d80>] (show_stack+0x18/0x1c)
+[  147.739612]  r6:003edf65 r5:00000bf0 r4:dddbb800 r3:7c07adad
+[  147.745559] [<c0012d68>] (show_stack) from [<c02c505c>] (dump_stack+0x20/0x28)
+[  147.753142] [<c02c503c>] (dump_stack) from [<bf064f08>] (uvc_video_decode_data+0x64/0xa4 [uvcvideo])
+[  147.762737] [<bf064ea4>] (uvc_video_decode_data [uvcvideo]) from [<bf065530>] (uvc_video_decode_isoc+0x58/0x180 [uvcvideo])
+[  147.774388]  r7:00000002 r6:de0c1800 r5:da1eb020 r4:ddb4c000
+[  147.780360] [<bf0654d8>] (uvc_video_decode_isoc [uvcvideo]) from [<bf06438c>] (uvc_video_complete+0xcc/0x110 [uvcvideo])
+[  147.791740]  r10:00000000 r9:00000101 r8:c0967108 r7:60000193 r6:ddb4c000 r5:da1eb000
+[  147.799960]  r4:dddbb800 r3:bf0654d8
+[  147.803729] [<bf0642c0>] (uvc_video_complete [uvcvideo]) from [<c04a464c>] (__usb_hcd_giveback_urb+0x74/0x110)
+[  147.814199]  r7:00000000 r6:00000000 r5:60000113 r4:da1eb000
+[  147.820146] [<c04a45d8>] (__usb_hcd_giveback_urb) from [<c04a4794>] (usb_giveback_urb_bh+0xac/0x130)
+[  147.829706]  r7:ddcc66dc r6:00000000 r5:dc12fab0 r4:ddcc66d8
+[  147.835653] [<c04a46e8>] (usb_giveback_urb_bh) from [<c0039bc8>] (tasklet_hi_action+0x7c/0xe0)
+[  147.844668]  r7:00000000 r6:c096504c r5:00000000 r4:ddcc66e4
+[  147.850613] [<c0039b4c>] (tasklet_hi_action) from [<c0039500>] (__do_softirq+0xec/0x240)
+[  147.859082]  r7:00000000 r6:c09a2cc0 r5:c09a2cc0 r4:00000000
+[  147.865026] [<c0039414>] (__do_softirq) from [<c003990c>] (irq_exit+0xc0/0x104)
+[  147.872675]  r10:dd804000 r9:dfe27144 r8:dc12fb98 r7:00000000 r6:00000000 r5:c097397c
+[  147.880895]  r4:000000b3
+[  147.883551] [<c003984c>] (irq_exit) from [<c0066af8>] (__handle_domain_irq+0x6c/0xd8)
+[  147.891747]  r4:000000b3 r3:dc12e000
+[  147.895498] [<c0066a8c>] (__handle_domain_irq) from [<c0009444>] (omap_intc_handle_irq+0x38/0x98)
+[  147.904784]  r10:00000001 r8:ddb4d800 r7:dc12fbcc r6:ffffffff r5:20000013 r4:c09cd200
+[  147.913011] [<c000940c>] (omap_intc_handle_irq) from [<c06a4314>] (__irq_svc+0x54/0x90)
+[  147.921391] Exception stack(0xdc12fb98 to 0xdc12fbe0)
+[  147.926678] fb80:                                                       00000001 ffffffe0
+[  147.935245] fba0: dc12e000 00000002 00000001 00000000 ddb4d800 dd0a68c8 ddb4d800 dfe27144
+[  147.943811] fbc0: 00000001 dc12fbfc dc12fc00 dc12fbe8 c0171ad0 c0056154 20000013 ffffffff
+[  147.952370]  r4:c0056154 r3:c0171ad0
+[  147.956125] [<c0056118>] (preempt_count_add) from [<c0171ad0>] (ext4_claim_free_clusters+0x38/0x98)
+[  147.965594]  r4:00000001 r3:00000000
+[  147.969348] [<c0171a98>] (ext4_claim_free_clusters) from [<c0179eec>] (ext4_da_get_block_prep+0x3e8/0x58c)
+[  147.979455]  r6:dd1e5580 r5:dd0a68b0 r4:00000000
+[  147.984304] [<c0179b04>] (ext4_da_get_block_prep) from [<c0178c04>] (ext4_block_write_begin+0x1d4/0x4e0)
+[  147.994230]  r10:00001000 r9:dfe27144 r8:00000f62 r7:00000000 r6:00000000 r5:00001000
+[  148.002450]  r4:00001000
+[  148.005107] [<c0178a30>] (ext4_block_write_begin) from [<c017e268>] (ext4_da_write_begin+0x13c/0x2a0)
+[  148.014759]  r10:0000009e r9:c0179b04 r8:dd0a698c r7:00000000 r6:dd1fe260 r5:dd0a68c8
+[  148.022980]  r4:dfe27144
+[  148.025637] [<c017e12c>] (ext4_da_write_begin) from [<c00b51e4>] (generic_perform_write+0xc4/0x1b8)
+[  148.035108]  r10:00000170 r9:00000000 r8:ddd49dc0 r7:c06baf2c r6:dd0a698c r5:dc12feec
+[  148.043328]  r4:0000009e
+[  148.045984] [<c00b5120>] (generic_perform_write) from [<c00b7588>] (__generic_file_write_iter+0x16c/0x214)
+[  148.056091]  r10:dd0a698c r9:0000020e r8:dc12ff00 r7:ddd49dc0 r6:dc12feec r5:dd0a6934
+[  148.064311]  r4:00000000
+[  148.066968] [<c00b741c>] (__generic_file_write_iter) from [<c01744c8>] (ext4_file_write_iter+0x1a8/0x4bc)
+[  148.076983]  r10:dd0a68c8 r9:0000020e r8:dc12ff00 r7:00000000 r6:ddd49dc0 r5:dd0a6934
+
+
+
+[  156.470912] CPU: 0 PID: 3126 Comm: lpr Not tainted 4.4.13-nisc #12
+[  156.477385] Hardware name: Generic AM33XX (Flattened Device Tree)
+[  156.484508] Backtrace: 
+[  156.487122] [<c0012be4>] (dump_backtrace) from [<c0012d80>] (show_stack+0x18/0x1c)
+[  156.495456]  r6:ddd40a00 r5:00000000 r4:ddb66ad4 r3:19ecbcd1
+[  156.501460] [<c0012d68>] (show_stack) from [<c02c505c>] (dump_stack+0x20/0x28)
+[  156.509390] [<c02c503c>] (dump_stack) from [<bf04b530>] (__fill_v4l2_buffer+0x250/0x26c [videobuf2_v4l2])
+[  156.519488] [<bf04b2e0>] (__fill_v4l2_buffer [videobuf2_v4l2]) from [<bf0400b0>] (vb2_core_querybuf+0x3c/0x48 [videobuf2_core])
+[  156.531851]  r8:ddd507c0 r7:bf069b88 r6:dca5fe14 r5:dca5fe14 r4:ddb66ad4
+[  156.538964] [<bf040074>] (vb2_core_querybuf [videobuf2_core]) from [<bf04d030>] (vb2_querybuf+0x94/0xbc [videobuf2_v4l2])
+[  156.550936] [<bf04cf9c>] (vb2_querybuf [videobuf2_v4l2]) from [<bf061fd8>] (uvc_query_buffer+0x2c/0x40 [uvcvideo])
+[  156.561819]  r5:ddb66ad4 r4:ddb66c08
+[  156.565606] [<bf061fac>] (uvc_query_buffer [uvcvideo]) from [<bf06353c>] (uvc_ioctl_querybuf+0x28/0x34 [uvcvideo])
+[  156.576893]  r6:dcad5600 r5:dca5fe14 r4:ddd507c0 r3:00000001
+[  156.583079] [<bf063514>] (uvc_ioctl_querybuf [uvcvideo]) from [<bf00eedc>] (v4l_querybuf+0x44/0x48 [videodev])
+[  156.594081] [<bf00ee98>] (v4l_querybuf [videodev]) from [<bf00cd10>] (__video_do_ioctl+0x270/0x304 [videodev])
+[  156.604601]  r7:00000000 r6:dcad5600 r5:ddb66810 r4:c0445609
+[  156.610963] [<bf00caa0>] (__video_do_ioctl [videodev]) from [<bf00e8e0>] (video_usercopy+0x138/0x534 [videodev])
+[  156.621949]  r10:dca5fe14 r9:beadb9b4 r8:00000000 r7:c095804c r6:00000000 r5:bf00caa0
+[  156.630204]  r4:c0445609
+[  156.632972] [<bf00e7a8>] (video_usercopy [videodev]) from [<bf00ecf4>] (video_ioctl2+0x18/0x1c [videodev])
+[  156.643424]  r10:beadb9b4 r9:dca9cd00 r8:00000000 r7:c0445609 r6:beadb9b4 r5:ddd507c0
+[  156.651683]  r4:ddb66810
+[  156.654448] [<bf00ecdc>] (video_ioctl2 [videodev]) from [<bf009548>] (v4l2_ioctl+0x9c/0xbc [videodev])
+[  156.664608] [<bf0094ac>] (v4l2_ioctl [videodev]) from [<c0111314>] (do_vfs_ioctl+0x80/0x6f8)
+[  156.673475]  r8:c0445609 r7:beadb9b4 r6:00000003 r5:ddd507c0 r4:ddd507c0 r3:bf0094ac
+[  156.681896] [<c0111294>] (do_vfs_ioctl) from [<c01119f8>] (SyS_ioctl+0x6c/0x7c)
+[  156.689837]  r10:00000003 r9:dca5e000 r8:c0445609 r7:beadb9b4 r6:00000000 r5:ddd507c0
+[  156.698070]  r4:ddd507c0
+[  156.700983] [<c011198c>] (SyS_ioctl) from [<c000fb80>] (ret_fast_syscall+0x0/0x3c)
+[  156.709183]  r10:00000000 r8:c000fd44 r7:00000036 r6:00000000 r5:00000000 r4:00000000
+
+
+
+[   55.253440] [<c0012be4>] (dump_backtrace) from [<c0012d80>] (show_stack+0x18/0x1c)
+[   55.261805]  r6:dc2e4300 r5:dc2e4200 r4:ddcf8ad4 r3:3be73c43
+[   55.267822] [<c0012d68>] (show_stack) from [<c02c505c>] (dump_stack+0x20/0x28)
+[   55.275800] [<c02c503c>] (dump_stack) from [<bf042710>] (vb2_core_dqbuf+0x20c/0x46c [videobuf2_core])
+[   55.285566] [<bf042504>] (vb2_core_dqbuf [videobuf2_core]) from [<bf04c348>] (vb2_internal_dqbuf+0x40/0x88 [videobuf2_v4l2])
+[   55.297707]  r10:bf0216ec r9:dc08de14 r8:dd99dd00 r7:dc08de14 r6:ddcf8ad4 r5:dc08de14
+[   55.306135]  r4:ddcf8ad4
+[   55.309149] [<bf04c308>] (vb2_internal_dqbuf [videobuf2_v4l2]) from [<bf04ce54>] (vb2_dqbuf+0x34/0x58 [videobuf2_v4l2])
+[   55.320853]  r5:00000800 r4:ddcf8c08
+[   55.324705] [<bf04ce20>] (vb2_dqbuf [videobuf2_v4l2]) from [<bf062100>] (uvc_dequeue_buffer+0x58/0x6c [uvcvideo])
+[   55.335892] [<bf0620a8>] (uvc_dequeue_buffer [uvcvideo]) from [<bf0634c4>] (uvc_ioctl_dqbuf+0x58/0x64 [uvcvideo])
+[   55.346700]  r7:ddd20940 r6:ddcf8800 r5:dc08de14 r4:ddd20940
+[   55.353196] [<bf06346c>] (uvc_ioctl_dqbuf [uvcvideo]) from [<bf00f554>] (v4l_dqbuf+0x5c/0x70 [videodev])
+[   55.363844]  r6:dc08de14 r5:bf069bbc r4:00000000 r3:bf06346c
+[   55.370017] [<bf00f4f8>] (v4l_dqbuf [videodev]) from [<bf00cd10>] (__video_do_ioctl+0x270/0x304 [videodev])
+[   55.380650]  r8:ddd20940 r7:00000000 r6:dd99dd00 r5:ddcf8810 r4:c0445611 r3:dc08de14
+[   55.388990] [<bf00caa0>] (__video_do_ioctl [videodev]) from [<bf00e8e0>] (video_usercopy+0x138/0x534 [videodev])
+[   55.400034]  r10:dc08de14 r9:beff37e4 r8:00000000 r7:c095804c r6:00000000 r5:bf00caa0
+[   55.408964]  r4:c0445611
+[   55.411755] [<bf00e7a8>] (video_usercopy [videodev]) from [<bf00ecf4>] (video_ioctl2+0x18/0x1c [videodev])
+[   55.422295]  r10:beff37e4 r9:dddb9030 r8:00000000 r7:c0445611 r6:beff37e4 r5:ddd20940
+[   55.430613]  r4:ddcf8810
+[   55.433396] [<bf00ecdc>] (video_ioctl2 [videodev]) from [<bf009548>] (v4l2_ioctl+0x9c/0xbc [videodev])
+[   55.443622] [<bf0094ac>] (v4l2_ioctl [videodev]) from [<c0111314>] (do_vfs_ioctl+0x80/0x6f8)
+[   55.452512]  r8:c0445611 r7:beff37e4 r6:00000003 r5:ddd20940 r4:ddd20940 r3:bf0094ac
+[   55.461416] [<c0111294>] (do_vfs_ioctl) from [<c01119f8>] (SyS_ioctl+0x6c/0x7c)
+[   55.469393]  r10:00000003 r9:dc08c000 r8:c0445611 r7:beff37e4 r6:00000000 r5:ddd20940
+[   55.477674]  r4:ddd20940
+[   55.480638] [<c011198c>] (SyS_ioctl) from [<c000fb80>] (ret_fast_syscall+0x0/0x3c)
+[   55.488882]  r10:00000000 r8:c000fd44 r7:00000036 r6:0000004d r5:b673a5e0 r4:00000001
