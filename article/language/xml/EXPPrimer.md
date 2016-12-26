@@ -1,3 +1,5 @@
+此文档原文资料在https://www.w3.org/XML/EXI/查看
+
 [TOC]
 
 # 2 概念
