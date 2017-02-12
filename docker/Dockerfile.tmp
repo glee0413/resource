@@ -1,0 +1,8 @@
+FROM ubuntu:14.04
+MAINTAINER light "glee-0413@163.com"
+
+RUN apt-get update
+RUN apt-get install -y vim mysql-server openjdk-7-jdk tomcat7 redis-server mysql-client
+#RUN apt-get install vim mysql-server openjdk-8-jdk tomcat7 redis-server mysql-client
+
+
